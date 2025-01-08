@@ -133,8 +133,9 @@ class EdiromWebComponentDemo extends HTMLElement {
 
               // Adding event listeners for changes in the web component
               childComponent.addEventListener('communicate-'+attribute+'-update', (e) => {
-                  textarea.textContent += 'Event "communicate-'+attribute+'-update"; '+attribute+'="'+e.detail[attribute]+'"\n';
-                  textarea.scrollTop = textarea.scrollHeight;
+                // attribute equals e.detail['property']
+                textarea.textContent += 'Event "communicate-'+attribute+'-update" / '+e.detail['element']+' set '+e.detail['property']+'="'+e.detail['value']+'"\n';
+                textarea.scrollTop = textarea.scrollHeight;
               });
 
               // Creating setters for the web component attribute values
